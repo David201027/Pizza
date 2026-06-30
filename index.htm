@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZA SILENTIO | Минималистичная пиццерия</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #1a1a1a;
+        }
+
+        body {
+            background-color: #fcfcfc;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Навигация */
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #888;
+        }
+
+        /* Главный баннер */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 0;
+            transition: background-color 0.2s ease;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: #444;
+        }
+
+        /* Сетка Меню */
+        .menu-section {
+            padding: 60px 0 100px 0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-item {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 20px;
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f0f0f0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-item-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .menu-item-price {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .menu-item-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+
+        /* О нас */
+        .about-section {
+            padding: 80px 0;
+            background-color: #f7f7f7;
+            text-align: center;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .about-section p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+            font-size: 16px;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #1a1a1a;
+            padding: 60px 0;
+        }
+
+        footer * {
+            color: #fff;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            font-size: 14px;
+        }
+
+        .footer-col h4 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .footer-col p {
+            color: #ccc;
+            margin-bottom: 8px;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #666 !important;
+        }
+
+        /* Стили кастомных элементов формы */
+        .constructor-group {
+            margin-bottom: 15px;
+        }
+        .constructor-group label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .checkbox-label, .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            margin-bottom: 6px;
+            cursor: pointer;
+        }
+        .checkbox-label input, .radio-label input {
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Silentio</div>
+                <div class="nav-links">
+                    <a href="#menu">Меню</a>
+                    <a href="#about">О нас</a>
+                    <a href="#contacts">Контакты</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Тесто. Томаты. Огонь.</h1>
+            <p>Ничего лишнего. Только идеальная неаполитанская пицца на дровах с хрустящей корочкой и локальными ингредиентами.</p>
+            <a href="#menu" class="btn">Смотреть меню</a>
+        </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Меню</h2>
+            
+            <div class="menu-grid">
+                <div style="grid-column: 1/-1; text-align: center; color: #888; padding: 40px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
+                    Загрузка свежего меню...
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Наша философия</h2>
+            <p>Мы верим в тишину и чистый вкус. Мы не используем лишних специй и сложных соусов, скрывающих качество продуктов. Только ферментированное 48 часов тесто, спелые томаты и жар дровяной печи.</p>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Адрес</h4>
+                    <p>Улица: Пушкина</p>
+                    <p>График: 24/7</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <p>Тел: +972 53 373 7544 </p>
+                    <p>Email: spevakdavid12@gmail.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Доставка</h4>
+                    <p>Бесплатно при заказе от 80 ₪.</p>
+                    <p>Зона доставки — в пределах центра.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Pizza Silentio. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <div id="constructor-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: #fff; padding: 35px; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto; border: 1px solid #eee; position: relative;">
+            <button id="close-constructor-btn" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: #888;">&times;</button>
+            
+            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 18px; margin-bottom: 20px; font-weight: 500; text-align: center;">Свой рецепт пиццы</h3>
+            
+            <form id="pizza-constructor-form">
+                <div class="constructor-group">
+                    <label>Размер пиццы</label>
+                    <label class="radio-label">
+                        <input type="radio" name="pizza-size" value="Стандарт (30см)" data-price="0" checked> Стандарт (30см)
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="pizza-size" value="Большая (35см)" data-price="15"> Большая (35см) (+15 ₪)
+                    </label>
+                </div>
+
+                <div class="constructor-group">
+                    <label>Соус-основа</label>
+                    <label class="radio-label">
+                        <input type="radio" name="pizza-sauce" value="Томатный" checked> Фирменный томатный соус
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="pizza-sauce" value="Белый (Сливочный)"> Белый чесночный соус
+                    </label>
+                </div>
+
+                <div class="constructor-group">
+                    <label>Добавить ингредиенты</label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="pizza-topping" value="Моцарелла" data-price="8"> Моцарелла (+8 ₪)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="pizza-topping" value="Пепперони" data-price="12"> Острая Пепперони (+12 ₪)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="pizza-topping" value="Грибы" data-price="7"> Свежие шампиньоны (+7 ₪)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="pizza-topping" value="Пармезан" data-price="10"> Выдержанный Пармезан (+10 ₪)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="pizza-topping" value="Халапеньо" data-price="6"> Острый халапеньо (+6 ₪)
+                    </label>
+                </div>
+
+                <div class="constructor-group">
+                    <label>Примечание к пицце</label>
+                    <textarea id="constructor-notes" placeholder="Например: без лука, сделать очень острой, порезать на 8 частей..." style="width: 100%; padding: 10px; border: 1px solid #ccc; font-size: 14px; border-radius: 0; outline: none; height: 70px; resize: none; font-family: inherit;"></textarea>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0; border-top: 1px solid #eee; padding-top: 15px;">
+                    <span style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Цена сборки:</span>
+                    <span id="constructor-total-price" style="font-weight: 600; font-size: 18px;">40 ₪</span>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; cursor: pointer;">Добавить в корзину</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="order-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: #fff; padding: 40px; max-width: 450px; width: 100%; border: 1px solid #eee; position: relative;">
+            <button id="close-modal-btn" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: #888;">&times;</button>
+            
+            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 18px; margin-bottom: 25px; font-weight: 500; text-align: center;">Оформление заказа</h3>
+            
+            <form id="modal-order-form" style="display: flex; flex-direction: column; gap: 15px;">
+                <div>
+                    <label style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #666; display: block; margin-bottom: 5px;">Ваше имя</label>
+                    <input type="text" id="modal-name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; font-size: 14px; border-radius: 0; outline: none;">
+                </div>
+                <div>
+                    <label style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #666; display: block; margin-bottom: 5px;">Телефон</label>
+                    <input type="tel" id="modal-phone" required placeholder="+972 00 000 0000" style="width: 100%; padding: 10px; border: 1px solid #ccc; font-size: 14px; border-radius: 0; outline: none;">
+                </div>
+                <div class="constructor-group">
+                        <label>Способ получения</label>
+                        <select id="modal-type" onchange="toggleAddressField()" style="width: 100%; padding: 10px; border: 1px solid #ccc; font-size: 14px; margin-bottom: 10px;">
+                            <option value="Самовывоз">Самовывоз (Улица Пушкина)</option>
+                            <option value="Доставка">Доставка курьером</option>
+                    </select>
+                </div>
+                <div id="address-container" style="display: none;">
+                        <label style="font-size: 12px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Ваш адрес доставки</label>
+                        <input type="text" id="modal-address" placeholder="Улица, дом, квартира" style="width: 100%; padding: 10px; border: 1px solid #ccc; font-size: 14px; margin-bottom: 10px;">
+                </div>
+                
+                <button type="submit" id="modal-submit-btn" class="btn" style="width: 100%; margin-top: 10px; cursor: pointer;">
+                    Подтвердить заказ
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
