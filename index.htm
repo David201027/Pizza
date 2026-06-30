@@ -399,10 +399,11 @@
                 </div>
                 <div class="constructor-group">
                         <label>Способ получения</label>
-                        <select id="modal-type" onchange="toggleAddressField()" style="width: 100%; padding: 10px; border: 1px solid #ccc; font-size: 14px; margin-bottom: 10px;">
-                            <option value="Самовывоз">Самовывоз (Улица Пушкина)</option>
-                            <option value="Доставка">Доставка курьером</option>
-                    </select>
+                        <select id="modal-type" onchange="toggleAddressField()" style="width: 100%; padding: 10px; border: 1px solid #ccc; font-size: 14px;">
+    <option value="Самовывоз">Самовывоз</option>
+    <option value="Доставка">Доставка (наша)</option>
+    <option value="Wolt">Заказать через Wolt</option>
+</select>
                 </div>
                 <div id="address-container" style="display: none;">
                         <label style="font-size: 12px; text-transform: uppercase; color: #666; margin-bottom: 5px;">Ваш адрес доставки</label>

@@ -6,6 +6,8 @@ const MENU_API_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq
 
 // ВСТАВЬ СЮДА СВОЙ РЕАЛЬНЫЙ URL ИЗ МОДУЛЯ WEBHOOKS В MAKE!
 const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/2xklgc3wggb286ae3y5rydx7e1uehfzt'; 
+// Ссылка на Wolt (замените на нужную)
+const WOLT_URL = 'https://wolt.com/he/isr/holon/restaurant/твоя-пиццерия'; 
 
 const BASE_CONSTRUCTOR_PRICE = 40; // Базовая цена пустой пиццы-основы
 let cart = JSON.parse(localStorage.getItem('pizza_cart')) || [];
@@ -229,6 +231,13 @@ async function sendOrderToMake(e) {
     const addressValue = document.getElementById('modal-address') ? document.getElementById('modal-address').value : '';
     const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
+    // --- НОВАЯ ЛОГИКА: Перенаправление на Wolt ---
+    if (typeValue === 'Wolt') {
+        window.location.href = WOLT_URL;
+        return;
+    }
+
+    // --- НОВАЯ ЛОГИКА: Проверка минимальной суммы ---
     if (typeValue === 'Доставка' && totalPrice < 80) {
         alert('Минимальная сумма заказа для доставки — 80 ₪');
         return;
